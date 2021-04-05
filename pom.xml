@@ -30,6 +30,8 @@
     <jacoco.version>0.8.5</jacoco.version>
     <nohttp-checkstyle.version>0.0.4.RELEASE</nohttp-checkstyle.version>
     <spring-format.version>0.0.25</spring-format.version>
+
+    <spring-geode.version>1.4.3</spring-geode.version>
   </properties>
 
   <dependencies>
@@ -119,7 +121,23 @@
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.geode</groupId>
+      <artifactId>spring-geode-starter</artifactId>
+    </dependency>
   </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.geode</groupId>
+        <artifactId>spring-geode-bom</artifactId>
+        <version>${spring-geode.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <plugins>

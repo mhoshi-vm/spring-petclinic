@@ -61,4 +61,9 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
 	 */
 	void save(Owner owner);
 
+	// Count
+	Integer count();
+
+	boolean existsById(@Param("id") Integer id);
+
 }

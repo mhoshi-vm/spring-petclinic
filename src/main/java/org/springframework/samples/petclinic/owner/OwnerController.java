@@ -87,7 +87,7 @@ class OwnerController {
 				}
 			}
 			// this.owners.save(owner);
-			return "redirect:/owners/" + owner.getId();
+			return "redirect:/owners/";
 		}
 	}
 

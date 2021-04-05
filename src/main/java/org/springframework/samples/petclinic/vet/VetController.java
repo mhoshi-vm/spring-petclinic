@@ -15,6 +15,8 @@
  */
 package org.springframework.samples.petclinic.vet;
 
+import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRegions;
+import org.springframework.geode.config.annotation.EnableClusterAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +29,7 @@ import java.util.Map;
  * @author Ken Krebs
  * @author Arjen Poutsma
  */
+
 @Controller
 class VetController {
 

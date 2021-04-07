@@ -1,11 +1,9 @@
-package org.springframework.samples.petclinic.geode;
+package org.springframework.samples.petclinic.owner;
 
 import org.apache.geode.cache.asyncqueue.AsyncEvent;
 import org.apache.geode.cache.asyncqueue.AsyncEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.samples.petclinic.owner.Owner;
-import org.springframework.samples.petclinic.owner.OwnerRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -19,9 +19,7 @@ import java.util.Collection;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRegions;
 import org.springframework.data.repository.Repository;
-import org.springframework.geode.config.annotation.EnableClusterAware;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -35,8 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-@EnableCachingDefinedRegions
-@EnableClusterAware
+
 public interface VetRepository extends Repository<Vet, Integer> {
 
 	/**
@@ -44,7 +41,7 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
 	@Transactional(readOnly = true)
-	@Cacheable("vets")
+	@Cacheable("Vets")
 	Collection<Vet> findAll() throws DataAccessException;
 
 }

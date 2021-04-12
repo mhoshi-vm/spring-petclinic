@@ -63,4 +63,5 @@ class CacheConfiguration {
 
 		return regionFactoryBean;
 	}
+
 }

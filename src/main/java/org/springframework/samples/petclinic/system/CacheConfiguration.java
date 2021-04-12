@@ -16,8 +16,6 @@
 
 package org.springframework.samples.petclinic.system;
 
-import javax.cache.configuration.MutableConfiguration;
-
 import org.apache.geode.cache.Cache;
 import org.apache.geode.cache.GemFireCache;
 import org.apache.geode.cache.asyncqueue.AsyncEventQueue;
@@ -26,7 +24,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.gemfire.ReplicatedRegionFactoryBean;
 import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRegions;
 import org.springframework.data.gemfire.wan.AsyncEventQueueFactoryBean;
-import org.springframework.geode.config.annotation.EnableClusterAware;
 import org.springframework.samples.petclinic.owner.Owner;
 import org.springframework.samples.petclinic.owner.OwnerAsyncEventListener;
 import org.springframework.samples.petclinic.vet.Vet;
@@ -39,7 +36,6 @@ import org.springframework.samples.petclinic.vet.Vet;
 
 @Configuration(proxyBeanMethods = false)
 @EnableCachingDefinedRegions
-@EnableClusterAware
 class CacheConfiguration {
 
 	@Bean
@@ -67,5 +63,4 @@ class CacheConfiguration {
 
 		return regionFactoryBean;
 	}
-
 }

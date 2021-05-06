@@ -16,8 +16,6 @@
 package org.springframework.samples.petclinic.owner;
 
 import org.apache.geode.cache.Region;
-import org.apache.geode.cache.asyncqueue.AsyncEventQueue;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,9 +46,6 @@ class OwnerController {
 	private final OwnerRepository owners;
 
 	private VisitRepository visits;
-
-	@Autowired
-	private AsyncEventQueue asyncEventQueue;
 
 	@Resource(name = "owner")
 	private Region<Integer, Owner> ownerRegion;

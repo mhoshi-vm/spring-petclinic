@@ -52,7 +52,7 @@ class OwnerController {
 	@Autowired
 	private AsyncEventQueue asyncEventQueue;
 
-	@Resource(name = "Owner")
+	@Resource(name = "owner")
 	private Region<Integer, Owner> ownerRegion;
 
 	public OwnerController(OwnerRepository clinicService, VisitRepository visits) {

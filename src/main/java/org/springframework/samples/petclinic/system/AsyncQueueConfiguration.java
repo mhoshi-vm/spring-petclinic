@@ -16,27 +16,35 @@
 
 package org.springframework.samples.petclinic.system;
 
+import org.apache.geode.cache.Cache;
 import org.apache.geode.cache.GemFireCache;
+import org.apache.geode.cache.asyncqueue.AsyncEventQueue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.gemfire.ReplicatedRegionFactoryBean;
 import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRegions;
-import org.springframework.samples.petclinic.vet.Vet;
+import org.springframework.data.gemfire.wan.AsyncEventQueueFactoryBean;
+import org.springframework.samples.petclinic.owner.Owner;
+import org.springframework.samples.petclinic.owner.OwnerAsyncEventListener;
 
-/**
- * Cache configuration intended for caches providing the JCache API. This configuration
- * creates the used cache for the application and enables statistics that become
- * accessible via JMX.
- */
-
-@Configuration(proxyBeanMethods = false)
+@Configuration
 @EnableCachingDefinedRegions
-class CacheConfiguration {
+class AsyncQueueConfiguration {
 
-	@Bean("vets")
-	ReplicatedRegionFactoryBean<Long, Vet> vetRegion(GemFireCache cache) {
-		ReplicatedRegionFactoryBean<Long, Vet> regionFactoryBean = new ReplicatedRegionFactoryBean<>();
+	@Bean
+	AsyncEventQueueFactoryBean ownerAsyncEventQueue(GemFireCache cache, OwnerAsyncEventListener asyncEventListener) {
+		AsyncEventQueueFactoryBean queueFactoryBean = new AsyncEventQueueFactoryBean((Cache) cache);
+		queueFactoryBean.setAsyncEventListener(asyncEventListener);
+
+		return queueFactoryBean;
+	}
+
+	@Bean("owner")
+	ReplicatedRegionFactoryBean<Long, Owner> ownersRegion(GemFireCache cache, AsyncEventQueue asyncEventQueue) {
+		ReplicatedRegionFactoryBean<Long, Owner> regionFactoryBean = new ReplicatedRegionFactoryBean<>();
 		regionFactoryBean.setCache(cache);
+		regionFactoryBean.setPersistent(false);
+		regionFactoryBean.setAsyncEventQueues(new AsyncEventQueue[] { asyncEventQueue });
 
 		return regionFactoryBean;
 	}

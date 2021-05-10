@@ -18,6 +18,10 @@ package org.springframework.samples.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.gemfire.config.annotation.CacheServerApplication;
+import org.springframework.data.gemfire.config.annotation.EnableLocator;
+import org.springframework.data.gemfire.config.annotation.EnableLogging;
+import org.springframework.data.gemfire.config.annotation.EnableManager;
 
 /**
  * PetClinic Spring Boot Application.
@@ -25,6 +29,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Dave Syer
  *
  */
+@EnableLogging
+@EnableLocator
+@EnableManager
+@CacheServerApplication
 @SpringBootApplication(proxyBeanMethods = false)
 public class PetClinicApplication {
 
